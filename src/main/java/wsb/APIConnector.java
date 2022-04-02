@@ -11,18 +11,18 @@ import java.util.Map;
 
 public class APIConnector {
     public String getData(String URL, String apiKey, Map<String, String> parameters) {
-        String urlString = URL;
+        StringBuilder urlString = new StringBuilder(URL);
         if (apiKey != null) {
-            urlString += "?apikey" + apiKey;
+            urlString.append("?apikey").append(apiKey);
         }
         if (parameters != null) {
             for(String key : parameters.keySet()){
-                urlString +="&"+key+"="+parameters.get(key);
+                urlString.append("&").append(key).append("=").append(parameters.get(key));
             }
         }
         try {
-            URL requestAddress = new URL(urlString);
-            String readLine = null;
+            URL requestAddress = new URL(urlString.toString());
+            String readLine;
             HttpURLConnection conection = (HttpURLConnection) requestAddress.openConnection();
             conection.setRequestMethod("GET");
             int responseCode = conection.getResponseCode();
