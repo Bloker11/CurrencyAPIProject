@@ -1,8 +1,21 @@
 package wsb;
 
+import org.json.JSONObject;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
-        CurrencyAPIConnector connector = new CurrencyAPIConnector();
-        System.out.println(connector.getHistoricalData("PLN","2022-04-01"));
+
+        System.out.println("----------------Homework------------------");
+        Wallet wallet = new Wallet();
+        System.out.println("Transactions stored in the database: ");
+
+        wallet.loadTransactions();
+
+
+
     }
 }
